@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Minimalist Style</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts: Playfair Display for headings, Lato for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS for styling -->
+    <style>
+        :root {
+            --primary-color: #2c3e50; /* Dark Slate Gray */
+            --secondary-color: #3498db; /* Peter River Blue */
+            --light-bg: #f8f9fa;
+            --dark-text: #343a40;
+            --light-text: #7f8c8d;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--dark-text);
+            font-family: 'Lato', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6, .navbar-brand {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- Navbar Styling --- */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            transition: background-color 0.3s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .navbar-brand, .nav-link {
+            color: var(--primary-color) !important;
+            transition: color 0.3s ease;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
+        .navbar-toggler {
+            border-color: var(--primary-color);
+        }
+        .navbar-toggler-icon {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2844, 62, 80, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* --- Section Styling --- */
+        section {
+            padding: 100px 0;
+            overflow: hidden;
+        }
+        .section-title {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        /* --- Hero Section --- */
+        #home {
+            background-color: var(--light-bg);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .hero-text h1 {
+            font-size: 4.5rem;
+            color: var(--primary-color);
+        }
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--light-text);
+        }
+        .hero-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 10px solid #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- Project Card Styling --- */
+        #projects {
+            background-color: #fff;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            transition: all 0.4s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        .card-title {
+            color: var(--primary-color);
+        }
+        .btn-custom {
+            background-color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 25px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #fff;
+            color: var(--primary-color);
+        }
+
+        /* --- Contact Form Styling --- */
+        #contact {
+            background-color: var(--light-bg);
+        }
+        .form-control {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            color: var(--dark-text);
+            border-radius: 10px;
+            padding: 12px 15px;
+        }
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+        }
+
+        /* --- Footer Styling --- */
+        footer {
+            background-color: var(--primary-color);
+            padding: 30px 0;
+            text-align: center;
+            color: #fff;
+        }
+
+        /* --- Animation --- */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header: Navigation Bar -->
+    <header>
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand fs-4" href="#home">My Portfolio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section: Hero -->
+        <section id="home">
+            <div class="container">
+                <div class="row align-items-center justify-content-center text-center text-lg-start">
+                    <div class="col-lg-6 col-md-8 fade-in-up">
+                        <div class="hero-text">
+                            <p class="text-secondary">HELLO, MY NAME IS</p>
+                            <h1>Your Name</h1>
+                            <p class="lead my-4">I'm a passionate developer creating modern and responsive web applications.</p>
+                            <a href="#projects" class="btn btn-custom">View My Work</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mt-5 mt-lg-0 fade-in-up" style="transition-delay: 0.2s;">
+                        <img src="https://placehold.co/400x400/e0e0e0/333?text=You" class="hero-img mx-auto d-block" alt="รูปโปรไฟล์">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section: Card & Grid -->
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">My Projects</h2>
+                <div class="row g-4 justify-content-center">
+                    <!-- Project 1 -->
+                    <div class="col-sm-12 col-md-6 col-lg-4 fade-in-up">
+                        <div class="card h-100">
+                            <img src="https://placehold.co/600x400/3498db/ffffff?text=Project+One" class="card-img-top" alt="ภาพโปรเจกต์ 1">
+                            <div class="card-body d-flex flex-column p-4">
+                                <h5 class="card-title fs-4">Project One</h5>
+                                <p class="card-text text-secondary">A web application for data management using modern technologies for real-time analysis.</p>
+                                <a href="#" class="btn btn-custom mt-auto align-self-start">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="col-sm-12 col-md-6 col-lg-4 fade-in-up" style="transition-delay: 0.2s;">
+                        <div class="card h-100">
+                            <img src="https://placehold.co/600x400/2c3e50/ffffff?text=Project+Two" class="card-img-top" alt="ภาพโปรเจกต์ 2">
+                            <div class="card-body d-flex flex-column p-4">
+                                <h5 class="card-title fs-4">Project Two</h5>
+                                <p class="card-text text-secondary">An e-commerce platform with a personalized product recommendation system.</p>
+                                <a href="#" class="btn btn-custom mt-auto align-self-start">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="col-sm-12 col-md-6 col-lg-4 fade-in-up" style="transition-delay: 0.4s;">
+                        <div class="card h-100">
+                            <img src="https://placehold.co/600x400/bdc3c7/ffffff?text=Project+Three" class="card-img-top" alt="ภาพโปรเจกต์ 3">
+                            <div class="card-body d-flex flex-column p-4">
+                                <h5 class="card-title fs-4">Project Three</h5>
+                                <p class="card-text text-secondary">A mobile game built with Unity Engine, featuring beautiful graphics and exciting gameplay.</p>
+                                <a href="#" class="btn btn-custom mt-auto align-self-start">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section: Form -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-custom px-5">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Name. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS for animations -->
+    <script>
+        // Scroll reveal animation
+        const sections = document.querySelectorAll('.fade-in-up');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Close navbar on link click for mobile
+        const navLinks = document.querySelectorAll('.nav-link');
+        const menuToggle = document.getElementById('navbarNav');
+        const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle: false});
+        navLinks.forEach((l) => {
+            l.addEventListener('click', () => {
+                if (menuToggle.classList.contains('show')) {
+                    bsCollapse.toggle();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
